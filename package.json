@@ -1,0 +1,25 @@
+{
+  "name": "mock-creator",
+  "version": "1.0.0",
+  "description": "Package for generating differend kinds of mocked data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmitryou/mock-creator.git"
+  },
+  "keywords": [
+    "mock",
+    "mocks",
+    "data",
+    "generator"
+  ],
+  "author": "dimax",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dmitryou/mock-creator/issues"
+  },
+  "homepage": "https://github.com/dmitryou/mock-creator#readme"
+}
