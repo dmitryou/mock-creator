@@ -4,8 +4,10 @@ const {
     configTypes,
 } = require('../types');
 
+const whoWroteThisMudule = 'Matan and Dima';
 /**
- * Following config will return array with 50 objects structed as:
+ * Running generateArray with following config will return
+ *  array with 50 objects structed as:
  *   {
  *      id: 1,
  *      name: "Matan",
@@ -27,7 +29,7 @@ const defaultArrayConfig = {
             name: {
                 type: valueTypes.STRING,
                 generatorType: generatorTypes.STATIC,
-                value: 'Matan',
+                value: whoWroteThisMudule.split(' ')[0],
             }
         },
         {
@@ -54,7 +56,8 @@ const defaultArrayConfig = {
 
 
 /**
- * Following config will return object structed as:
+ * Running generateObject with following config
+ *  will return object structed as:
  *   {
  *      id: 1,
  *      name: "Matan",
@@ -75,7 +78,7 @@ const defaultObjectConfig = {
             name: {
                 type: valueTypes.STRING,
                 generatorType: generatorTypes.STATIC,
-                value: 'Matan',
+                value: whoWroteThisMudule.split(' ')[2],
             }
         },
         {
@@ -100,6 +103,10 @@ const defaultObjectConfig = {
     ]
 }
 
+/**
+ * Running generateValue with following config 
+ * will return value between 1-10000
+ */
 const defaultValueConfig = {
     luckyNumber: {
         type: valueTypes.NUMBER,
