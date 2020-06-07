@@ -21,6 +21,17 @@ const getValueByTypes = ({ type, generatorType, index, range, value }) => {
     }
 }
 
+const generateString = ({ generatorType, index, value }) => {
+    switch (generatorType) {
+        case generatorTypes.RANDOM:
+            return makeId(15);
+        case generatorTypes.STATIC:
+            return value;
+        case generatorTypes.UNIQ:
+            return index.toString();
+        default:
+    }
+}
 
 const generateNumber = ({ generatorType, index, range, value }) => {
     switch (generatorType) {
@@ -85,5 +96,15 @@ const getRandomInt = (min, max) => {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+const makeId = (length) => {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+ }
 
 module.exports = getValueByTypes;
