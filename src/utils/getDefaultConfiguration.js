@@ -1,8 +1,4 @@
-const {
-    generatorTypes,
-    valueTypes,
-    configTypes,
-} = require('../types');
+const { generatorTypes, valueTypes, configTypes } = require('../types');
 
 const whoWroteThisMudule = 'Matan and Dima';
 /**
@@ -17,43 +13,32 @@ const whoWroteThisMudule = 'Matan and Dima';
  *   }
  */
 const defaultArrayConfig = {
-    length: 50,
-    fields: [
-        {
-            id: {
-                type: valueTypes.NUMBER,
-                generatorType: generatorTypes.UNIQ,
-            }
-        },
-        {
-            name: {
-                type: valueTypes.STRING,
-                generatorType: generatorTypes.STATIC,
-                value: whoWroteThisMudule.split(' ')[0],
-            }
-        },
-        {
-            age: {
-                type: valueTypes.NUMBER,
-                generatorType: generatorTypes.RANGE,
-                range: [20, 30],
-            },
-        },
-        {
-            birthDate: {
-                type: valueTypes.DATE,
-                generatorType: generatorTypes.RANDOM,
-            },
-        },
-        {
-            luckyNumber: {
-                type: valueTypes.NUMBER,
-                generatorType: generatorTypes.RANDOM,
-            },
-        },
-    ]
-}
-
+	length: 50,
+	fields: {
+		id: {
+			type: valueTypes.NUMBER,
+			generatorType: generatorTypes.UNIQ,
+		},
+		name: {
+			type: valueTypes.STRING,
+			generatorType: generatorTypes.STATIC,
+			value: whoWroteThisMudule.split(' ')[0],
+		},
+		age: {
+			type: valueTypes.NUMBER,
+			generatorType: generatorTypes.RANGE,
+			range: [20, 30],
+		},
+		birthDate: {
+			type: valueTypes.DATE,
+			generatorType: generatorTypes.RANDOM,
+		},
+		luckyNumber: {
+			type: valueTypes.NUMBER,
+			generatorType: generatorTypes.RANDOM,
+		},
+	},
+};
 
 /**
  * Running generateObject with following config
@@ -67,63 +52,62 @@ const defaultArrayConfig = {
  *   }
  */
 const defaultObjectConfig = {
-    fields: [
-        {
-            id: {
-                type: valueTypes.NUMBER,
-                generatorType: generatorTypes.UNIQ,
-            }
-        },
-        {
-            name: {
-                type: valueTypes.STRING,
-                generatorType: generatorTypes.STATIC,
-                value: whoWroteThisMudule.split(' ')[2],
-            }
-        },
-        {
-            age: {
-                type: valueTypes.NUMBER,
-                generatorType: generatorTypes.RANGE,
-                range: [20, 30],
-            },
-        },
-        {
-            birthDate: {
-                type: valueTypes.DATE,
-                generatorType: generatorTypes.RANDOM,
-            },
-        },
-        {
-            luckyNumber: {
-                type: valueTypes.NUMBER,
-                generatorType: generatorTypes.RANDOM,
-            },
-        },
-    ]
-}
+	fields: [
+		{
+			id: {
+				type: valueTypes.NUMBER,
+				generatorType: generatorTypes.UNIQ,
+			},
+		},
+		{
+			name: {
+				type: valueTypes.STRING,
+				generatorType: generatorTypes.STATIC,
+				value: whoWroteThisMudule.split(' ')[2],
+			},
+		},
+		{
+			age: {
+				type: valueTypes.NUMBER,
+				generatorType: generatorTypes.RANGE,
+				range: [20, 30],
+			},
+		},
+		{
+			birthDate: {
+				type: valueTypes.DATE,
+				generatorType: generatorTypes.RANDOM,
+			},
+		},
+		{
+			luckyNumber: {
+				type: valueTypes.NUMBER,
+				generatorType: generatorTypes.RANDOM,
+			},
+		},
+	],
+};
 
 /**
- * Running generateValue with following config 
+ * Running generateValue with following config
  * will return value between 1-10000
  */
 const defaultValueConfig = {
-    luckyNumber: {
-        type: valueTypes.NUMBER,
-        generatorType: generatorTypes.RANDOM,
-    },
-}
-
+	luckyNumber: {
+		type: valueTypes.NUMBER,
+		generatorType: generatorTypes.RANDOM,
+	},
+};
 
 const getDefaultConfiguration = (type) => {
-    console.log('type', type);
+	console.log('type', type);
 
-    if (type === configTypes.ARRAY) {
-        return defaultArrayConfig;
-    } else if (type === configTypes.OBJECT) {
-        return defaultObjectConfig;
-    }
-    return defaultValueConfig;
-}
+	if (type === configTypes.ARRAY) {
+		return defaultArrayConfig;
+	} else if (type === configTypes.OBJECT) {
+		return defaultObjectConfig;
+	}
+	return defaultValueConfig;
+};
 
 module.exports = getDefaultConfiguration;
