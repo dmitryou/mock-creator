@@ -1,36 +1,39 @@
 
 const defaultArrayConfig = {
     length: 50,
-    columns: [
+    fields: [
         {
             id: {
-                type: 'string',
-                generatorType: 'inc',
+                type: 'number',
+                generatorType: 'uniq',
             }
         },
         {
             name: {
                 type: 'string',
                 generatorType: 'static',
+                value: 'Matan',
             }
         },
         {
             age: {
                 type: 'number',
                 generatorType: 'random',
-            }
+            },
         },
         {
             birthDate: {
                 type: 'date',
                 generatorType: 'random',
-            }
+            },
         },
     ]
 }
 
+//   [ { id: 1, name: "Matan", age: 23, birthDate: new Date()}  ]
+
 const defaultObjectConfig = {
-    columns: [
+    fields: [
         {
             id: {
                 type: 'string',
@@ -41,6 +44,7 @@ const defaultObjectConfig = {
             name: {
                 type: 'string',
                 generatorType: 'static',
+                value: 'Dima'
             }
         },
         {
@@ -61,8 +65,8 @@ const defaultObjectConfig = {
 
 const getDefaultConfiguration = (type) => {
     console.log('type', type);
-    
-    if(type === 'array') {
+
+    if (type === 'array') {
         return defaultArrayConfig;
     }
     return defaultObjectConfig;
