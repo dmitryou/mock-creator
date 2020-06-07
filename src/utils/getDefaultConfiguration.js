@@ -1,75 +1,122 @@
+const {
+    generatorTypes,
+    valueTypes,
+    configTypes,
+} = require('../types');
 
+/**
+ * Following config will return array with 50 objects structed as:
+ *   {
+ *      id: 1,
+ *      name: "Matan",
+ *      age: 23, (number between 20-30)
+ *      birthDate: new Date(),
+ *      luckyNumber: 777, ( any random number)
+ *   }
+ */
 const defaultArrayConfig = {
     length: 50,
     fields: [
         {
             id: {
-                type: 'number',
-                generatorType: 'uniq',
+                type: valueTypes.NUMBER,
+                generatorType: generatorTypes.UNIQ,
             }
         },
         {
             name: {
-                type: 'string',
-                generatorType: 'static',
+                type: valueTypes.STRING,
+                generatorType: generatorTypes.STATIC,
                 value: 'Matan',
             }
         },
         {
             age: {
-                type: 'number',
-                generatorType: 'random',
+                type: valueTypes.NUMBER,
+                generatorType: generatorTypes.RANGE,
+                range: [20, 30],
             },
         },
         {
             birthDate: {
-                type: 'date',
-                generatorType: 'random',
+                type: valueTypes.DATE,
+                generatorType: generatorTypes.RANDOM,
+            },
+        },
+        {
+            luckyNumber: {
+                type: valueTypes.NUMBER,
+                generatorType: generatorTypes.RANDOM,
             },
         },
     ]
 }
 
-//   [ { id: 1, name: "Matan", age: 23, birthDate: new Date()}  ]
 
+/**
+ * Following config will return object structed as:
+ *   {
+ *      id: 1,
+ *      name: "Matan",
+ *      age: 23, (number between 20-30)
+ *      birthDate: new Date(),
+ *      luckyNumber: 777, ( any random number)
+ *   }
+ */
 const defaultObjectConfig = {
     fields: [
         {
             id: {
-                type: 'string',
-                generatorType: 'static',
+                type: valueTypes.NUMBER,
+                generatorType: generatorTypes.UNIQ,
             }
         },
         {
             name: {
-                type: 'string',
-                generatorType: 'static',
-                value: 'Dima'
+                type: valueTypes.STRING,
+                generatorType: generatorTypes.STATIC,
+                value: 'Matan',
             }
         },
         {
             age: {
-                type: 'number',
-                generatorType: 'random',
-            }
+                type: valueTypes.NUMBER,
+                generatorType: generatorTypes.RANGE,
+                range: [20, 30],
+            },
         },
         {
             birthDate: {
-                type: 'date',
-                generatorType: 'random',
-            }
+                type: valueTypes.DATE,
+                generatorType: generatorTypes.RANDOM,
+            },
+        },
+        {
+            luckyNumber: {
+                type: valueTypes.NUMBER,
+                generatorType: generatorTypes.RANDOM,
+            },
         },
     ]
+}
+
+const defaultValueConfig = {
+    luckyNumber: {
+        type: valueTypes.NUMBER,
+        generatorType: generatorTypes.RANDOM,
+    },
 }
 
 
 const getDefaultConfiguration = (type) => {
     console.log('type', type);
 
-    if (type === 'array') {
+    if (type === configTypes.ARRAY) {
         return defaultArrayConfig;
+    } else if (type === configTypes.OBJECT) {
+        return defaultObjectConfig;
     }
-    return defaultObjectConfig;
+    return defaultValueConfig;
 }
 
 module.exports = getDefaultConfiguration;
