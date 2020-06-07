@@ -60,7 +60,7 @@ const defaultArrayConfig = {
  *  will return object structed as:
  *   {
  *      id: 1,
- *      name: "Matan",
+ *      name: "Dima",
  *      age: 23, (number between 20-30)
  *      birthDate: new Date(),
  *      luckyNumber: 777, ( any random number)
