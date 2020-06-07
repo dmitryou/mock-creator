@@ -2,7 +2,7 @@ const { getDefaultConfiguration } = require('../utils');
 
 const generateValue = require('./generateValue');
 
-const generateAray = (configuration = getDefaultConfiguration('array')) => {
+const generateArray = (configuration = getDefaultConfiguration('array')) => {
 	const { length, fields } = configuration;
 	const keys = Object.keys(fields);
 
@@ -19,4 +19,4 @@ const generateAray = (configuration = getDefaultConfiguration('array')) => {
 	}));
 };
 
-module.exports = generateAray;
+module.exports = generateArray;
