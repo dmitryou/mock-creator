@@ -16,7 +16,7 @@ yarn add mock-creator
 
 ## Usage
 
-```node
+```javascript
 var { 
     generators,
     types,
