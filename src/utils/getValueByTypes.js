@@ -21,7 +21,7 @@ const getValueByTypes = ({ type, generatorType, index, range, value }) => {
     }
 }
 
-const generateString = ({ generatorType, index, value }) => {
+const generateString = ({ generatorType, index = 0, value }) => {
     switch (generatorType) {
         case generatorTypes.RANDOM:
             return makeId(15);
@@ -33,7 +33,7 @@ const generateString = ({ generatorType, index, value }) => {
     }
 }
 
-const generateNumber = ({ generatorType, index, range, value }) => {
+const generateNumber = ({ generatorType, index = 0, range, value }) => {
     switch (generatorType) {
         case generatorTypes.RANDOM:
             return getRandomInt(1, 100000);
@@ -47,7 +47,7 @@ const generateNumber = ({ generatorType, index, range, value }) => {
     }
 }
 
-const generateDate = ({ generatorType, index, range, value }) => {
+const generateDate = ({ generatorType, index = 0, range, value }) => {
     switch (generatorType) {
         case generatorTypes.RANDOM:
             return getRandomDateInRange(new Date(2012, 0, 1), new Date(2022, 0, 1));

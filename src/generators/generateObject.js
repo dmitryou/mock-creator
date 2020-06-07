@@ -1,4 +1,8 @@
-const generateObject = (configuration) => {
+const { getDefaultConfiguration } = require('../utils');
+
+const generateValue = require('./generateValue');
+
+const generateObject = (configuration = getDefaultConfiguration('object')) => {
     const { fields } = configuration;
     const keys = Object.keys(fields);
     
@@ -7,7 +11,7 @@ const generateObject = (configuration) => {
 			const { type, generatorType, value, range } = fields[key];
 
 			return {
-				[key]: generateValue({ type, generatorType, index, value, range }),
+				[key]: generateValue({ type, generatorType, value, range }),
 			};
         })),
         
