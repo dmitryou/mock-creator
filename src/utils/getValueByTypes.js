@@ -4,6 +4,10 @@ const {
     configTypes,
 } = require('../types');
 
+const getRandomDateInRange = (start, end) => {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+}
+
 const getValueByTypes = ({ type, generatorType, index, range, value }) => {    
     switch (type) {
         case valueTypes.NUMBER:
@@ -39,6 +43,36 @@ const generateNumber = ({ generatorType, index, range, value }) => {
             return value;
         case generatorTypes.UNIQ:
             return index;
+        default:
+    }
+}
+
+const generateDate = ({ generatorType, index, range, value }) => {
+    switch (generatorType) {
+        case generatorTypes.RANDOM:
+            return getRandomDateInRange(new Date(2012, 0, 1), new Date(2022, 0, 1));
+        case generatorTypes.RANGE:
+            let start = range[0];
+            let end = range[1];
+
+            if (isNaN(start.getTime())) {
+                start = new Date();
+            }
+
+            if (isNaN(end.getTime())) {
+                end = new Date();
+            }
+
+            return getRandomDateInRange(start, end);
+        case generatorTypes.STATIC:
+            if (isNaN(value.getTime())) {
+                return new Date();
+            }
+
+            return value;
+        case generatorTypes.UNIQ:
+            const now = Math.round((new Date()).getTime() / 1000);
+            return new Date(now + index * 60 * 60 * 24);
         default:
     }
 }
