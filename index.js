@@ -1,8 +1,5 @@
-const generateArray = require('./src/generators/generateArray');
-const generateObject = require('./src/generators/generateObject');
-
+const generators = require('./src/generators');
 
 module.exports = {
-  generateArray,
-  generateObject,
-}
+  generators,
+};
