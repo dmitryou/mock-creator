@@ -20,7 +20,7 @@ yarn add mock-creator
 var { 
     generators,
     types,
- } = require('../mock-creator');
+ } = require('mock-creator');
 
 
 const arrayConfig = {

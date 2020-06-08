@@ -1,6 +1,6 @@
 {
   "name": "mock-creator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Package for generating differend kinds of mocked data.",
   "main": "index.js",
   "scripts": {
