@@ -8,14 +8,13 @@ const getRandomDateInRange = (start, end) => {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 }
 
-const getValueByTypes = ({ type, generatorType, index, range, value }) => {    
+const getValueByTypes = ({ type, generatorType, index, range, value }) => {
     switch (type) {
-        case valueTypes.NUMBER:
-            return generateNumber({ generatorType, index, range, value });
         case valueTypes.STRING:
             return generateString({ generatorType, index, range, value });
         case valueTypes.DATE:
             return generateDate({ generatorType, index, range, value });
+        case valueTypes.NUMBER:
         default:
             return generateNumber({ generatorType, index, range, value });
     }
@@ -25,11 +24,11 @@ const generateString = ({ generatorType, index = 0, value }) => {
     switch (generatorType) {
         case generatorTypes.RANDOM:
             return makeId(15);
-        case generatorTypes.STATIC:
-            return value;
         case generatorTypes.UNIQ:
             return index.toString();
+        case generatorTypes.STATIC:
         default:
+            return value;
     }
 }
 
@@ -39,18 +38,16 @@ const generateNumber = ({ generatorType, index = 0, range, value }) => {
             return getRandomInt(1, 100000);
         case generatorTypes.RANGE:
             return getRandomInt(range[0], range[1]);
-        case generatorTypes.STATIC:
-            return value;
         case generatorTypes.UNIQ:
             return index;
+        case generatorTypes.STATIC:
         default:
+            return value;
     }
 }
 
 const generateDate = ({ generatorType, index = 0, range, value }) => {
     switch (generatorType) {
-        case generatorTypes.RANDOM:
-            return getRandomDateInRange(new Date(2012, 0, 1), new Date(2022, 0, 1));
         case generatorTypes.RANGE:
             let start = range[0];
             let end = range[1];
@@ -73,7 +70,9 @@ const generateDate = ({ generatorType, index = 0, range, value }) => {
         case generatorTypes.UNIQ:
             const now = Math.round((new Date()).getTime() / 1000);
             return new Date(now + index * 60 * 60 * 24);
+        case generatorTypes.RANDOM:
         default:
+            return getRandomDateInRange(new Date(2012, 0, 1), new Date(2022, 0, 1));
     }
 }
 
@@ -97,14 +96,17 @@ const getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+/**
+ * Returns a random string in specified lenght
+ */
 const makeId = (length) => {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
- }
+}
 
 module.exports = getValueByTypes;
