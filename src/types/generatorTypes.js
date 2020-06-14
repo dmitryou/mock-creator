@@ -3,5 +3,5 @@ module.exports = Object.freeze({
     STATIC: 'static',
     RANDOM: 'random',
     RANGE: 'range',
-    ONE_OF: 'oneOf',
+    ONE_OF: 'one_of',
 });

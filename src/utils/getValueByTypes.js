@@ -8,31 +8,33 @@ const getRandomDateInRange = (start, end) => {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 }
 
-const getValueByTypes = ({ type, generatorType, index, range, value }) => {
+const getValueByTypes = ({ type, generatorType, index, range, value, oneOf }) => {
     switch (type) {
         case valueTypes.STRING:
-            return generateString({ generatorType, index, range, value });
+            return generateString({ generatorType, index, range, value, oneOf });
         case valueTypes.DATE:
-            return generateDate({ generatorType, index, range, value });
+            return generateDate({ generatorType, index, range, value, oneOf });
         case valueTypes.NUMBER:
         default:
-            return generateNumber({ generatorType, index, range, value });
+            return generateNumber({ generatorType, index, range, value, oneOf });
     }
 }
 
-const generateString = ({ generatorType, index = 0, value }) => {
+const generateString = ({ generatorType, index = 0, value, oneOf = [1] }) => {
     switch (generatorType) {
         case generatorTypes.RANDOM:
             return makeId(15);
         case generatorTypes.UNIQ:
             return index.toString();
+        case generatorTypes.ONE_OF:
+            return oneOf[getRandomInt(0, oneOf.length - 1)].toString();
         case generatorTypes.STATIC:
         default:
             return value;
     }
 }
 
-const generateNumber = ({ generatorType, index = 0, range, value }) => {
+const generateNumber = ({ generatorType, index = 0, range, value, oneOf = [1] }) => {
     switch (generatorType) {
         case generatorTypes.RANDOM:
             return getRandomInt(1, 100000);
@@ -40,13 +42,15 @@ const generateNumber = ({ generatorType, index = 0, range, value }) => {
             return getRandomInt(range[0], range[1]);
         case generatorTypes.UNIQ:
             return index;
+        case generatorTypes.ONE_OF:
+            return oneOf[getRandomInt(0, oneOf.length - 1)].toString();
         case generatorTypes.STATIC:
         default:
             return value;
     }
 }
 
-const generateDate = ({ generatorType, index = 0, range, value }) => {
+const generateDate = ({ generatorType, index = 0, range, value, oneOf = [1] }) => {
     switch (generatorType) {
         case generatorTypes.RANGE:
             let start = range[0];
@@ -70,6 +74,8 @@ const generateDate = ({ generatorType, index = 0, range, value }) => {
         case generatorTypes.UNIQ:
             const now = Math.round((new Date()).getTime() / 1000);
             return new Date(now + index * 60 * 60 * 24);
+        case generatorTypes.ONE_OF:
+            return oneOf[getRandomInt(0, oneOf.length - 1)];
         case generatorTypes.RANDOM:
         default:
             return getRandomDateInRange(new Date(2012, 0, 1), new Date(2022, 0, 1));

@@ -8,10 +8,10 @@ const generateObject = (configuration = getDefaultConfiguration('object')) => {
     
     return {
 		...Object.assign({}, ...keys.map((key) => {
-			const { type, generatorType, value, range } = fields[key];
+			const { type, generatorType, value, range, oneOf } = fields[key];
 
 			return {
-				[key]: generateValue({ type, generatorType, value, range }),
+				[key]: generateValue({ type, generatorType, value, range, oneOf }),
 			};
         })),
         

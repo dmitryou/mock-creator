@@ -138,7 +138,7 @@ results [
 | Method             | Type      | Valid Values                             | Description
 |--------------------|-----------|------------------------------------------|-------------------------------
 | valueTypes         | string    | [ 'number', 'string', 'date' ]           | Generates array of objects.
-| generatorTypes     | string    | [ 'uniq', 'static', 'random', 'range' ]  | Could be imported from generatorTypes.
+| generatorTypes     | string    | [ 'uniq', 'static', 'random', 'range', 'one_of' ]  | Could be imported from generatorTypes.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

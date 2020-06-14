@@ -9,10 +9,17 @@ const generateArray = (configuration = getDefaultConfiguration('array')) => {
 	return Array.from({ length }, (item, index) => ({
 
 		...Object.assign({}, ...keys.map((key) => {
-			const { type, generatorType, value, range } = fields[key];
+			const { type, generatorType, value, range, oneOf } = fields[key];
 
 			return {
-				[key]: generateValue({ type, generatorType, index, value, range }),
+				[key]: generateValue({ 
+					type, 
+					generatorType, 
+					index, 
+					value, 
+					range,
+					oneOf,
+				 }),
 			};
         })),
         
