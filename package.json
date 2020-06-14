@@ -1,6 +1,6 @@
 {
   "name": "mock-creator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Package for generating differend kinds of mocked data.",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,10 @@
     "mock",
     "mocks",
     "data",
-    "generator"
+    "generator",
+    "mock generator",
+    "create mocks",
+    "generate mocks"
   ],
   "author": "dimax",
   "license": "MIT",
